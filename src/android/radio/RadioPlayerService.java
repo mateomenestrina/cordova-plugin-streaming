@@ -537,7 +537,7 @@ public class RadioPlayerService extends Service implements PlayerCallback {
         mNotificationTemplate.setOnClickPendingIntent(fakeR.getId("id", "notification_collapse"), cancelPending);
         mNotificationTemplate.setOnClickPendingIntent(fakeR.getId("id", "notification_play"), playPausePending);
 
-
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
         /**
          * Create notification instance
          */
@@ -553,7 +553,7 @@ public class RadioPlayerService extends Service implements PlayerCallback {
         /**
          * Expanded notification
          */
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+
 
             RemoteViews mExpandedView = new RemoteViews(this.getPackageName(), fakeR.getId("layout", "notification_expanded"));
 
@@ -566,10 +566,13 @@ public class RadioPlayerService extends Service implements PlayerCallback {
                                     mExpandedView.setOnClickPendingIntent(fakeR.getId("id", "notification_expanded_play"), playPausePending);
 
                                             notification.bigContentView = mExpandedView;
-        }
+
 
         if (mNotificationManager != null)
             mNotificationManager.notify(NOTIFICATION_ID, notification);
+
+
+        }
     }
 
     public void updateNotification(String singerName, String songName, int smallImage, int artImage) {
