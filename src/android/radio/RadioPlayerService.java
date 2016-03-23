@@ -592,5 +592,12 @@ public class RadioPlayerService extends Service implements PlayerCallback {
         buildNotification();
     }
 
+    public void updateNotification2(String singerName, String songName) {
+        this.singerName = singerName;
+        this.songName = songName;
+
+        buildNotification();
+    }
+
 
 }

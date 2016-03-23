@@ -182,6 +182,13 @@ public class RadioManager implements IRadioManager {
             mService.updateNotification(singerName, songName, smallArt, bigArt);
     }
 
+
+    @Override
+    public void updateNotification2(String singerName, String songName) {
+        if(mService != null)
+            mService.updateNotification2(singerName, songName);
+    }
+
     /**
      * Connection
      */
